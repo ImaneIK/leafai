@@ -178,8 +178,6 @@ export const ImageUpload = () => {
         if (image) {
           let formData = new FormData();
           formData.append("file", selectedFile);
-          console.log("ilias");
-          console.log(formData);
           let res = await axios({
             method: "post",
             url: process.env.REACT_APP_API_URL,

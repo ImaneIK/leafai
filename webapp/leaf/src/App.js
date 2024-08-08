@@ -30,7 +30,7 @@ function App() {
         <div className='grid grid-cols-1 md:grid-cols-2 '>
           <div className='lg:mx-auto lg:my-0 px-8 py-4 lg:px-0 '>
             <div class=' flex-text w-full lg:w-full'>
-              <h1 className=' my-2 lg:text-6xl text-5xl  font-bold leading-tight text-center lg:text-left mb-8'>
+              <h1 className=' my-2 lg:text-6xl text-5xl  font-bold leading-tight text-center lg:text-left '>
                 Bring your plants to life
               </h1>
               <p className='lg:text-xl sm:text-md mb-4 text-center lg:text-left'>
