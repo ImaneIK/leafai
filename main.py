@@ -19,7 +19,7 @@ origins = [
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=['*', 'https://leafai.vercel.app', 'https://leafai-f5na.onrender.com/predict'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
