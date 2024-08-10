@@ -11,15 +11,9 @@ import psutil
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "http://localhost:8000/predict",
-    "https://leafai.vercel.app"
-]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*', 'https://leafai.vercel.app', 'https://leafai-f5na.onrender.com/predict'],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -64,7 +58,7 @@ async def predict(
 
     # Measure memory after inference
     after_inference = process.memory_info().rss / (1024 * 1024)
-    print(f"Memory used during inference: {after_inference - after_load:.2f} MB")
+    print(f"withing predict endpoint - Memory used during inference: {after_inference - after_load:.2f} MB")
 
     return {
         'class': predicted_class,
