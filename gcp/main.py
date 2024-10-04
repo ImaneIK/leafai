@@ -1,7 +1,9 @@
+from fastapi import FastAPI
 from google.cloud import storage
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
 
 model = None
 interpreter = None
@@ -10,7 +12,9 @@ output_index = None
 
 class_names = ["Early Blight", "Late Blight", "Healthy"]
 
-BUCKET_NAME = "leafai-model"
+BUCKET_NAME = "plant-disease-scanner-bucket"
+
+
 # Here you need to put the name of your GCP bucket
 
 
@@ -42,7 +46,7 @@ def predict(request):
         # image resizing
     )
 
-    image = image/255
+    image = image / 255
     # normalize the image in 0 to 1 range
 
     img_array = tf.expand_dims(image, 0)
