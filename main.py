@@ -8,7 +8,7 @@ import os
 import psutil
 
 app = Flask(__name__)
-CORS(app)  # Allow CORS requests from any origin
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow CORS requests from any origin
 
 # Measure memory before loading the model
 process = psutil.Process(os.getpid())
