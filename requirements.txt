@@ -7,3 +7,4 @@ psutil~=6.0.0
 requests~=2.30.0
 starlette~=0.26.1
 flask~=3.0.3
+flask-cors==3.0.10
