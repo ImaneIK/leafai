@@ -8,7 +8,16 @@ import os
 import psutil
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Allow CORS requests from any origin
+
+
+
+@app.after_request  # Enable CORS for all routes
+def enable_cors(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
 
 # Measure memory before loading the model
 process = psutil.Process(os.getpid())
@@ -33,8 +42,13 @@ def read_file_as_image(data) -> np.ndarray:
     return image
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','OPTIONS'])
 def predict():
+
+    if request.method == 'OPTIONS':
+        # Respond to preflight request
+        return 'This is a preflight request', 200
+
     if 'file' not in request.files:
         return jsonify({"error": "No file provided"}), 400
 
@@ -56,6 +70,5 @@ def predict():
         'confidence': float(confidence)
     }), 200
 
-
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    app.run(host='0.0.0.0', port=8000)

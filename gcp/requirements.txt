@@ -4,7 +4,10 @@ numpy~=1.23.5
 Pillow~=9.5.0
 uvicorn~=0.22.0
 psutil~=6.0.0
-fastapi~=0.95.1
 requests~=2.30.0
 python-multipart
+flask~=3.0.3
+flask-cors==3.0.10
+gunicorn==22.0.0
+
 
